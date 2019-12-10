@@ -52,11 +52,16 @@ end
 def get_products_info()
   products_info = []
   # all list of category
-  page_num = 1
+  page_num = 0
   count_pages = get_num_of_pages()
   while page_num <= count_pages do
     # site page url
-    page = $url_category + "?p=#{page_num}"
+    if page_num == 0
+      page = $url_category
+    else
+      page = $url_category + "?p=#{page_num}"
+    end
+    
     page_num += 1
   
     # parse page
